@@ -6,6 +6,7 @@ if (!$coin) $this->goback();
 $PoS = ($coin->algo == 'PoS'); // or if 'stake' key is present in 'getinfo' method
 $DCR = ($coin->rpcencoding == 'DCR' || $coin->getOfficialSymbol() == 'DCR');
 $DGB = ($coin->rpcencoding == 'DGB' || $coin->getOfficialSymbol() == 'DGB');
+$FJC = ($coin->rpcencoding == 'FJC' || $coin->getOfficialSymbol() == 'FJC');
 $ETH = ($coin->rpcencoding == 'GETH');
 
 $remote = new WalletRPC($coin);
@@ -297,7 +298,7 @@ echo <<<end
 end;
 
 $account = '';
-if ($DCR || $DGB) $account = '*';
+if ($DCR || $DGB || $FJC) $account = '*';
 else if ($ETH) $account = $coin->master_wallet;
 
 $txs = $remote->listtransactions($account, $maxrows);
