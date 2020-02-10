@@ -181,9 +181,9 @@ void coind_init(YAAMP_COIND *coind)
 
 	sprintf(params, "[\"%s\"]", account);
 
-	json_value *json = rpc_call(&coind->rpc, "getaccountaddress", params);
-	if(!json)
-	{
+//	json_value *json = rpc_call(&coind->rpc, "getaccountaddress", params);
+//	if(!json)
+//	{
 	    json_value *json = rpc_call(&coind->rpc, "getnewaddress", params);
 	    if(!json)
 	    {
@@ -198,7 +198,7 @@ void coind_init(YAAMP_COIND *coind)
         			return;
         		}
 	    }
-	}
+//	}
 
 	if (json->u.object.values[0].value->type == json_string) {
 		strcpy(coind->wallet, json->u.object.values[0].value->u.string.ptr);
