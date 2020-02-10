@@ -184,16 +184,20 @@ void coind_init(YAAMP_COIND *coind)
 	json_value *json = rpc_call(&coind->rpc, "getaccountaddress", params);
 	if(!json)
 	{
-		json = rpc_call(&coind->rpc, "getaddressesbyaccount", params);
-		if (json && json_is_array(json) && json->u.object.length) {
-			debuglog("is array...");
-			if (json->u.object.values[0].value->type == json_string)
-				json = json->u.object.values[0].value;
-		}
-		if (!json) {
-			stratumlog("ERROR getaccountaddress %s\n", coind->name);
-			return;
-		}
+	    json_value *json = rpc_call(&coind->rpc, "getnewaddress", params);
+	    if(!json)
+	    {
+	            json = rpc_call(&coind->rpc, "getaddressesbyaccount", params);
+        		if (json && json_is_array(json) && json->u.object.length) {
+        			debuglog("is array...");
+        			if (json->u.object.values[0].value->type == json_string)
+        				json = json->u.object.values[0].value;
+        		}
+        		if (!json) {
+        			stratumlog("ERROR getaccountaddress %s\n", coind->name);
+        			return;
+        		}
+	    }
 	}
 
 	if (json->u.object.values[0].value->type == json_string) {
