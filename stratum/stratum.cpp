@@ -81,7 +81,7 @@ static void scrypt_hash(const char* input, char* output, uint32_t len)
 
 static void scryptn_hash(const char* input, char* output, uint32_t len)
 {
-	time_t time_table[][2] =
+/*	time_t time_table[][2] =
 	{
 		{2048, 1389306217},
 		{4096, 1456415081},
@@ -100,7 +100,10 @@ static void scryptn_hash(const char* input, char* output, uint32_t len)
 		{
 			scrypt_N_R_1_256(input, output, time_table[i][0], 1, len);
 			return;
-		}
+		}*/
+
+	// fixed fujicoin N11
+	scrypt_N_R_1_256(input, output, 2048, 1, len);
 }
 
 static void neoscrypt_hash(const char* input, char* output, uint32_t len)

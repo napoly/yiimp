@@ -19,6 +19,7 @@ function yaamp_get_algos()
 		'blakecoin',
 		'blake2s',
 		'blake2b',
+		'bmw',
 		'decred',
 		'deep',
 		'exosis',
@@ -86,19 +87,32 @@ function yaamp_get_algos()
 function yaamp_algo_mBTC_factor($algo)
 {
 	switch($algo) {
-	case 'sha256':
 	case 'sha256t':
 	case 'sha256q':
 	case 'blake':
 	case 'blakecoin':
-	case 'blake2s':
 	case 'blake2b':
+	case 'bmw':
+	case 'scryptn':
+	case 'scrypt':
+	case 'lyra2v3':
+	case 'lyra2v2':
+	case 'sib':
+	case 'x11':
+	case 'groestl':
 	case 'decred':
 	case 'keccak':
 	case 'keccakc':
 	case 'lbry':
 	case 'vanilla':
 		return 1000;
+	case 'blake2s':
+	    return 1000000;
+	case 'sha256':
+	    return 1000000000;
+	case 'yescrypt':
+    case 'yescryptR32':
+        return 0.001;
 	default:
 		return 1;
 	}
@@ -115,6 +129,7 @@ function yaamp_get_algo_norm($algo)
 		'sha256'	=> 1.0,
 		'scrypt'	=> 1.0,
 		'scryptn'	=> 1.0,
+		'bmw'       => 1.0,
 		'x11'		=> 1.0,
 		'x13'		=> 1.0,
 		'argon2'	=> 1.0,
@@ -151,6 +166,7 @@ function getAlgoColors($algo)
 		'sha256t'	=> '#d0d0f0',
 		'sha256q'	=> '#9696dd',
 		'scrypt'	=> '#c0c0e0',
+		'bmw'       => '#a0d0c0',
 		'neoscrypt'	=> '#a0d0f0',
 		'scryptn'	=> '#d0d0d0',
 		'c11'		=> '#a0a0d0',
@@ -240,6 +256,7 @@ function getAlgoPort($algo)
 		'scrypt'	=> 3433,
 		'timetravel'	=> 3555,
 		'bitcore'	=> 3556,
+		'bmw'       => 2747,
 		'exosis'	=> 3557,
 		'c11'		=> 3573,
 		'deep'		=> 3535,

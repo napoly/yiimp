@@ -63,7 +63,7 @@ echo <<<END
 <style type="text/css">
 table.dataGrid a.red, table.dataGrid a.red:visited, a.red { color: darkred; }
 div#main_actions {
-	position: absolute; top: 60px; right: 16px; width: 280px; text-align: right;
+	position: absolute; top: 67px; right: 16px; width: 280px; text-align: right;
 }
 div#markets {
 	overflow-x: hidden; overflow-y: scroll; max-height: 156px;
